@@ -1,0 +1,38 @@
+<div class="container">
+        <h1>Create A Task</h1>
+        <form #f="ngForm"  (ngSubmit)="save(f)">
+          <div class="form-group">
+            <label for="name">Title*</label>
+            <input type="text" class="form-control" #name="ngModel"  id="name" [ngModel]="task.task_name" name="task_name" required>
+            <span class="help-block alert-warning"  *ngIf="!name.valid && name.touched">Please enter a name for the task</span>
+          </div>
+    
+          <div class="form-group">
+            <label for="alterEgo">Assigned To*</label>
+            <select class="form-control" id="user" #assigned_user="ngModel" [ngModel]="task.assigned_user" name="assigned_user" required>
+                <option *ngFor="let user of users" [value]="user._id">{{user.name}}</option>
+            </select>
+            <span class="help-block alert-warning" *ngIf="!assigned_user.valid && assigned_user.touched">Please select the assigned user</span>
+          </div>
+          <div class="form-group">
+              <label for="alterEgo">Due Date*</label>  
+            <div class="input-group">                  
+                  
+                  <input class="form-control"  placeholder="yyyy-mm-dd"
+                         name="dp" [(ngModel)]="calendar" required readonly ngbDatepicker #d="ngbDatepicker">
+                  <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">
+                      <img src="img/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;"/>
+                    </button>
+                  </div>
+            </div>
+
+          </div>
+
+          <div class="alert-danger" #error_message></div>
+          
+    
+          <button type="submit"  class="btn btn-success">Submit</button>
+    
+        </form>
+    </div>

@@ -1,0 +1,39 @@
+
+<table class="table">
+    <thead>
+      <tr>
+        <th colspan="7" style="text-align:right;">
+            <a  [routerLink]="['/home/tasks/edit']">
+                <span class="glyphicon glyphicon-plus">Create A new Task</span>
+              </a>
+        </th>
+      </tr>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Title</th>
+        <th scope="col">Assinged To</th>
+        <th scope="col">Created By</th>
+        <th scope="col">Created Time</th>
+        <th scope="col">Due On</th>
+        <th scope="col">&nbsp;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr  *ngFor="let task of tasks;let i=index">
+        <th scope="row" >{{i+1}}</th>
+        <td>{{task.task_name}}</td>
+        <td>{{task.assigned_user_name}}</td>
+        <td>{{task.created_by_user_name}}</td>
+        <td>{{task.created_on| amLocale:'en' | amDateFormat:'DD MMM, YYYY'}}</td>
+        <td  >{{task.due_by| amLocale:'en' | amDateFormat:'DD MMM, YYYY'}}</td>
+        <td class="glyphicon glyphicon-edit" >
+         <a [routerLink]="['/home/tasks/edit/',task._id]">Edit</a>
+         <a href="javascript:void(0);" (click)="onDelete(task._id)">Delete</a>
+
+        </td>
+      </tr>      
+    </tbody>
+  </table>
+
+
+ 

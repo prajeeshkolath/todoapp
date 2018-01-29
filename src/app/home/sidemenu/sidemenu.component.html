@@ -1,0 +1,16 @@
+<nav id="sidebar" style="height:100%;">
+  
+    <ul class="list-unstyled components">
+        <p>&nbsp;</p>
+        <li class="active">
+            <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Tasks</a>
+            <ul class="collapse list-unstyled" id="homeSubmenu">
+                <li><a [routerLink]="['/home/tasks/view']">View Tasks</a></li>
+                <li><a [routerLink]="['/home/tasks/edit']">Create a New Task</a></li>
+            </ul>
+        </li>
+       
+    </ul>
+
+    
+</nav>
